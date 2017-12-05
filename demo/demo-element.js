@@ -2,6 +2,10 @@
 <link rel="import" href="../../iron-icons/iron-icons.html">
 <link rel="import" href="../icon-toggle.html">
 
+export const html = Polymer.html;
+
+import {Element as PolymerElement} from "./@polymer/polymer@3.0.0-pre.1/polymer-element.js"
+
 
 <dom-module id="demo-element">
   <template>
