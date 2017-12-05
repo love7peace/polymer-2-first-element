@@ -1,46 +1,45 @@
-<link rel="import" href="../../polymer/polymer.html">
-<link rel="import" href="../../iron-icons/iron-icons.html">
-<link rel="import" href="../icon-toggle.html">
+import {Element as PolymerElement} from "../../node_modules/@polymer/polymer/polymer-element.js"
+import "../../node_modules/@polymer/iron-icon/iron-icon.js"
+import "../icon-toggle.js"
 
-export const html = Polymer.html;
+//export const html = Polymer.html;
 
-import {Element as PolymerElement} from "./@polymer/polymer@3.0.0-pre.1/polymer-element.js"
+export const html = (strings, ...values) => strings[0]
++ values.map((v, i) => v + strings[i+1]).join('');
 
-
-<dom-module id="demo-element">
-  <template>
-    <style>
-      :host {
-        font-family: sans-serif;
-      }
-    </style>
+class DemoElement extends PolymerElement {
   
-    <h3>Statically-configured icon-toggles</h3>
-    
-    <icon-toggle toggle-icon="star"></icon-toggle>
-    <icon-toggle toggle-icon="star" pressed></icon-toggle>
-    
-    <h3>Data-bound icon-toggle</h3>
-
-    <!-- use a computed binding to generate the message -->
-    <div><span>[[_message(isFav)]]</span></div>
-
-    <!-- curly brackets ({{}}} allow two-way binding --> 
-    <icon-toggle toggle-icon="favorite" pressed="{{isFav}}"></icon-toggle>
-  </template>
-
-  <script>
-    class DemoElement extends Polymer.Element {
-      static get is() { return 'demo-element' }
-      _message(fav) {
-        if (fav) {
-          return 'You really like me!';
-        } 
-        else {
-          return 'Do you like me?';
-        }
-      }
+  _message(fav) {
+    if (fav) {
+      return 'You really like me!';
+    } 
+    else {
+      return 'Do you like me?';
     }
-    customElements.define(DemoElement.is, DemoElement);
-    </script>
-</dom-module>
+  }
+  
+  static get template () {
+    return html`
+      <style>
+        :host {
+          font-family: sans-serif;
+        }
+      </style>
+  
+      <h3>Statically-configured icon-toggles</h3>
+    
+      <icon-toggle toggle-icon="star"></icon-toggle>
+      <icon-toggle toggle-icon="star" pressed></icon-toggle>
+    
+      <h3>Data-bound icon-toggle</h3>
+
+      <!-- use a computed binding to generate the message -->
+      <div><span>[[_message(isFav)]]</span></div>
+
+      <!-- curly brackets ({{}}} allow two-way binding --> 
+      <icon-toggle toggle-icon="favorite" pressed="{{isFav}}"></icon-toggle>
+    `
+  }
+}
+
+customElements.define('demo-element', DemoElement);
