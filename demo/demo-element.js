@@ -1,5 +1,5 @@
 import {Element as PolymerElement} from "../../node_modules/@polymer/polymer/polymer-element.js"
-import "../../node_modules/@polymer/iron-icon/iron-icon.js"
+import "../../node_modules/@polymer/iron-icons/iron-icons.js"
 import "../icon-toggle.js"
 
 //export const html = Polymer.html;
