@@ -24,21 +24,26 @@ class IconToggle extends PolymerElement {
   
   constructor() {
     super();
+    this.addEventListener('click', this.toggle.bind(this));
+  }
+  
+  toggle() {
+    this.pressed = !this.pressed;
   }
 
   static get template () {
     return html`
       <style>
-        /* shadow DOM styles go here */
+        /* local styles go here */
         :host {
           display: inline-block;
         }
         iron-icon {
-          fill: rgba(0,0,0,0);
-          stroke: currentcolor;
+          fill: var(--icon-toggle-color, rgba(0,0,0,0));
+          stroke: var(--icon-toggle-outline-color, currentcolor);
         }
         :host([pressed]) iron-icon {
-          fill: currentcolor;
+          fill: var(--icon-toggle-pressed-color, currentcolor);
         }
       </style>
         
