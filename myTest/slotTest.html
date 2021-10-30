@@ -1,0 +1,36 @@
+<!-- 템플릿 선언 -->
+<template id="my-template">
+    <style>
+        :host {
+            all: initial;
+            display: block;
+            contain: content;
+            color: green;
+        }
+        :host(:hover) {
+            border: 1px solid blue;
+        }
+        :host-context(.orange-theme) {
+            color: orange;
+        }
+        ::slotted(a) {
+            color: red;
+            text-decoration: none;
+        }
+    </style>
+    <slot></slot>
+</template>
+<!-- 사용자 커스텀 요소 -->
+<my-template>
+    <h1>Hello Shadow DOM!</h1>
+</my-template>
+<my-template class="orange-theme">
+    <div>
+        <span>text 1</span>
+        <span>text 2</span>
+        <span>text 3</span>
+    </div>
+</my-template>
+<my-template>
+    <a href="#">Hello, Shadow DOM!</a>
+</my-template>
